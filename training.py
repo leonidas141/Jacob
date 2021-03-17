@@ -32,12 +32,12 @@ for intent in intents["intents"]:
             classes.append(intent["tag"])
 
 
-words = [lemmatizer.lemmatize(word) for word in words if word not in ignore_letters]
-words = sorted(set(words))
+words = [lemmatizer.lemmatize(word.lower()) for word in words if word not in ignore_letters]
+words = sorted(list(set(words)))
 # print(words)
 
 # ---- perpare training data
-classes = sorted(set(classes))
+classes = sorted(list(set(classes)))
 pickle.dump(words, open("words.pkl", "wb"))
 pickle.dump(classes, open("classes.pkl", "wb"))
 
@@ -72,6 +72,6 @@ model.add(Dense(len(train_y[0]), activation="softmax"))
 sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss="binary_crossentropy", optimizer=sgd, metrics=["accuracy"])
 
-model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
-model.save("chatbotv01.model")
+hist = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
+model.save("chatbotv01.h5", hist)
 print("Done")

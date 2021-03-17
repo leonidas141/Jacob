@@ -2,6 +2,21 @@
     "intents":[
         {
             "tag": "greetings",
+            "patterns": ["hello", "hey", "hi", "how is it?"],
+            "responses": ["Hello!","Hey!","What can I do for you?"]
+        },
+        {
+            "tag": "no",
+            "patterns": ["hello", "hey", "hi", "how is it ?"],
+            "responses": ["Hello!","Hey!","What can I do for you?"]
+        },
+        {
+            "tag": "yes",
+            "patterns": ["hello", "hey", "hi", "how is it ?"],
+            "responses": ["Hello!","Hey!","What can I do for you?"]
+        },
+        {
+            "tag": "hi",
             "patterns": ["hello", "hey", "hi", "how is it going?"],
             "responses": ["Hello!","Hey!","What can I do for you?"]
         }
