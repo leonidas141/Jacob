@@ -1,0 +1,1 @@
+from pa.main import GenericAssistant
